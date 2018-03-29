@@ -58,9 +58,14 @@ public class IncorrectUsernameOrPassword {
 
                     System.out.println("Please enter in you Password");
                     userInputPasswordToTest = scanner.nextLine();
+
+                    if (!userInputUserName.equals(userInputUserName)
+                            || !userInputPassword.equals(userInputPasswordToTest)) {
+                        System.out.println("===Your Username or Temporary Password is INCORRECT===");
+                        System.out.println("Please review your Username or Temporary Password and RE-LOGIN");
+                    }
                 } while (!userInputUserName.equals(userInputUserName)
                         || !userInputPassword.equals(userInputPasswordToTest));
-
             } else {
                 System.out.println("===NONE OF THE INFORMAITON YOU ENTERED IS CURRENTLY ON FILE===");
             }
@@ -92,27 +97,22 @@ public class IncorrectUsernameOrPassword {
                     temporaryPasswordToTest = Integer.parseInt(stringTemporaryPasswordToTest);
 
                     if (!userInputUserName.equals(userNameToTest)
-                            && temporaryPassword != temporaryPasswordToTest) {
-                        System.out.println("===YOUR USERNAME AND TEMPOARY PASSWORD DO NOT MATCH WHAT WE HAVE ON FILE===");
-                        System.out.println("===KINDLY REVIEW YOUR USERNAME AND TEMPORARY PASSWORD AND RE-LOGIN===");
+                            || temporaryPasswordToTest != temporaryPassword) {
+                        System.out.println("===Your Username or Temporary Password is INCORRECT===");
+                        System.out.println("Please review your Username or Temporary Password and RE-LOGIN");
                     }
 
                 } while (!userInputUserName.equals(userNameToTest)
-                        && temporaryPassword == temporaryPasswordToTest);
+                        || temporaryPasswordToTest != temporaryPassword);
             } else {
                 System.out.println("===NONE OF THE INFORMAITON YOU ENTERED IS CURRENTLY ON FILE===");
             }
-        }
-
-        if (userInputUserName.equals(userNameToTest)) {
+        } else if (userInputUserName.equals(userNameToTest)) {
             if (temporaryPassword == temporaryPasswordToTest
                     || userInputPassword.equals(userInputPasswordToTest)) {
                 System.out.println("===WELCOME===");
                 System.out.println("===YOUR CURRENT ACCOUNT BALANCE=== $" + currentAccountBalance);
-//===CALL PASSWORD METHOD HERE===
-
             }
-
         }
     }
 }
